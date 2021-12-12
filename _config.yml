@@ -19,7 +19,7 @@ locale                   : "en-ES"
 title                    : "Yorkox"
 title_separator          : "|"
 name                     : "Yorkox"
-description              : "CyberSecurity Junior | Red-Team/Pentester | HTB/THM/HMVM/RTM Player | eJPT "
+description              : "CyberSecurity Junior | Red-Team/Pentester | HTB/THM/HMVM/RTM Player | eJPT"
 url                      : "https://yorkox0.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "yorkox0/yorkox0.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -103,7 +103,7 @@ analytics:
 author:
   name             : "Yorkox"
   avatar           : "/assets/images/avatar.png"
-  bio              : "Pentester, CTF player<br>HackTheBox ATeam"
+  bio              : "CyberSecurity Junior | Red-Team/Pentester | HTB/THM Player | eJPT"
   location         : "Spain"
   email            : "contact@yorkox.com"
   uri              :
