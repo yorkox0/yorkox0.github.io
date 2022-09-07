@@ -9,8 +9,8 @@ title:  "beaconAttack"
 ```bash
 git clone https://github.com/yorkox0/deauth-attack
 cd deauth-attack
-chmod +x *.sh
-sudo bash deauth-attack.sh
+chmod +x beacon-attack
+sudo bash beacon-attack
 ```
 
 ## Al inicio del script tendreis que seleccionar la antena de red inalambrica preferida para realizar el ataque, en mi caso seleccionaré 'wlan1'
