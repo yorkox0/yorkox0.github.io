@@ -1,0 +1,108 @@
+<html>
+<head>
+    <title>Stopwatch</title>
+    <style>
+        body {
+            background-color: #282C34;
+            color: #c9d1d9;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #time {
+            font-size: 2rem;
+            color: #828997;
+            margin-bottom: 20px;
+        }
+        #stopwatch {
+            font-size: 5rem;
+            color: #BE5046;
+            margin-bottom: 30px;
+        }
+        .button {
+            background-color: #D19A66;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1rem;
+            color: #0d1117;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #e76f51;
+        }
+        @media (max-width: 600px) {
+            #stopwatch {
+                font-size: 3rem;
+            }
+            .button {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="time"></div>
+    <div id="stopwatch">00:00:00:00</div>
+    <div>
+        <button class="button" onclick="reset()">Reiniciar</button>
+        <button class="button" onclick="start()">Iniciar</button>
+        <button class="button" onclick="pause()">Pausar</button>
+    </div>
+
+    <script>
+        let stopwatchInterval;
+        let elapsedTime = 0;
+        let running = false;
+
+        function updateMadridTime() {
+            const options = { timeZone: 'Europe/Madrid', hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const madridTime = new Intl.DateTimeFormat('en-US', options).format(new Date());
+            document.getElementById('time').textContent = madridTime;
+        }
+
+        function updateStopwatch() {
+            const hours = Math.floor(elapsedTime / 3600000);
+            const minutes = Math.floor((elapsedTime % 3600000) / 60000);
+            const seconds = Math.floor((elapsedTime % 60000) / 1000);
+            const milliseconds = Math.floor((elapsedTime % 1000) / 10);
+            document.getElementById('stopwatch').textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${String(milliseconds).padStart(2, '0')}`;
+        }
+
+        function start() {
+            if (!running) {
+                running = true;
+                const startTime = Date.now() - elapsedTime;
+                stopwatchInterval = setInterval(() => {
+                    elapsedTime = Date.now() - startTime;
+                    updateStopwatch();
+                }, 10);
+            }
+        }
+
+        function pause() {
+            if (running) {
+                running = false;
+                clearInterval(stopwatchInterval);
+            }
+        }
+
+        function reset() {
+            running = false;
+            clearInterval(stopwatchInterval);
+            elapsedTime = 0;
+            updateStopwatch();
+        }
+
+        setInterval(updateMadridTime, 1000);
+        updateMadridTime();
+    </script>
+</body>
+</html>
